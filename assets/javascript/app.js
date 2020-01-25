@@ -1,12 +1,10 @@
 //video for Trivia game https://www.youtube.com/watch?v=xhmmiRmxQ8Q&feature=youtu.be
 
 //Declare Variables
-var startButton
-var newGameButton
-
 var qTimer = 6;
 var intervalId;
 var qClockRunning = false;
+var stopTime;
 
 var wins = 0;
 var loses = 0;
@@ -15,8 +13,8 @@ var totalScore = 0;
 var progress
 
 $(document).ready(function() {
-
-
+ 
+      
 //Question Timer -------------------------------
 function qStart () {
     if (!qClockRunning) {
@@ -91,16 +89,16 @@ $("#startButton").on('click', function() {
 });
 
 //Next Question button
-$("#nextQuestion").on('click', function() {
-    $("#resultsDuringGame").addClass("displayNone");
-    $("#quizContainer").removeClass("displayNone");
-    runningQuestion++;
-    renderQuestion();
-//timer features
-    qTimer = 6;
-    clearInterval(intervalId); 
-    qRun();
-});
+// $("#nextQuestion").on('click', function() {
+//     $("#resultsDuringGame").addClass("displayNone");
+//     $("#quizContainer").removeClass("displayNone");
+//     runningQuestion++;
+//     renderQuestion();
+// //timer features
+//     qTimer = 6;
+//     clearInterval(intervalId); 
+//     qRun();
+// });
 
 //Select an Answer ----------
 $("#choiceA").on('click', function() {
@@ -110,6 +108,17 @@ $("#choiceA").on('click', function() {
     $("#resultsDuringGame").removeClass("displayNone");
     checkAnswer();
     console.log("Answer: " + userAnswer)
+});
+
+//New game button
+$("#newGame").on('click', function() {
+    $("#totalScore").empty();
+    $("#wins").empty();
+    $("#loses").empty();
+    $("runningQuestion").empty();
+    $("#startButton").removeClass("displayNone");
+    $("#endGameResults").addClass("displayNone");
+    console.log("check")
 });
 
 $("#choiceB").on('click', function() {
@@ -153,7 +162,9 @@ function renderQuestion() {
     $("#correctAnswer").html("<p> Correct Answer: " + q.correctAnswer + "</p>");
 }
 
-
+function timeStop () {
+    stopTime = setTimeout
+}
 function checkAnswer () {
     
     if ( userAnswer == questions[runningQuestion].correctAnswer){
@@ -166,9 +177,26 @@ function checkAnswer () {
         userAnswer = "";
     }
     if (runningQuestion === lastQuestion) {
+        clearTimeout();
         $("#quizContainer").addClass("displayNone");
+        $("#resultsDuringGame").addClass("displayNone");
         $("#endGameResults").removeClass("displayNone");
+
     }
+
+    setTimeout(function() {
+        $("#resultsDuringGame").addClass("displayNone");
+        $("#quizContainer").removeClass("displayNone");
+        runningQuestion++;
+        renderQuestion();
+    //timer features
+        qTimer = 6;
+        clearInterval(intervalId); 
+        qRun();
+        //move to next question
+    }, 5000);
+
+
 
     console.log(runningQuestion);
     console.log(lastQuestion);

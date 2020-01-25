@@ -29,15 +29,24 @@
 </head>
 
 <body>
-    <div id="startButton" class="startGame"></div>
-    <div id="quizContainer">
+    <!-- Start Screen -->
+    <div id="startButton">
+        <div class="startGame">Click to get started</div>
+    </div>
+
+    <!-- Game Stats: Always Displayed -->
+    <div>
         <div id="timer"></div>
         <div id="totalScore"></div>
         <div id="wins"></div>
         <div id="loses"></div>
+        <div class="progress"></div>
+    </div>
+
+<!-- Question Screen -->
+    <div id="quizContainer">
         <div id="question"></div>
         <div id="questionImage"></div>
-
 
         <div id="multipleChoice">
             <div class="option" id="choiceA"></div>
@@ -45,10 +54,19 @@
             <div class="option" id="choiceC"></div>
             <div class="option" id="choiceD"></div>
         </div>
-        <div id="progress">
-            <div class="progress"></div>
-        </div>
     </div>
+
+<!-- Results During Game -->
+        <div id="progress">
+            <div id="userAnswer"></div>
+            <div id="correctAnswer"></div>
+            <div id="nextQuestion"></div>
+        </div>
+
+<!-- End of Game Results -->
+<div id="endGameResults">
+    <div id="newGame"></div>
+</div>
 
 </body>
 </html>

@@ -45,6 +45,24 @@ function stop() {
     loses++;
 }
 
+//timer feature
+function myFunction(){
+    stopTime = setTimeout(function() {
+        $("#resultsDuringGame").addClass("displayNone");
+        $("#quizContainer").removeClass("displayNone");
+        runningQuestion++;
+        renderQuestion();
+    //timer features
+        qTimer = 6;
+        clearInterval(intervalId); 
+        qRun();
+        //move to next question
+    }, 3000);}
+
+
+function myStopFunction() {
+    clearTimeout(stopTime);
+}
 
 //Questions, choices, and images for questions-----------------------------
     let questions = [
@@ -88,18 +106,6 @@ $("#startButton").on('click', function() {
     console.log("check")
 });
 
-//Next Question button
-// $("#nextQuestion").on('click', function() {
-//     $("#resultsDuringGame").addClass("displayNone");
-//     $("#quizContainer").removeClass("displayNone");
-//     runningQuestion++;
-//     renderQuestion();
-// //timer features
-//     qTimer = 6;
-//     clearInterval(intervalId); 
-//     qRun();
-// });
-
 //Select an Answer ----------
 $("#choiceA").on('click', function() {
     userAnswer = "A";
@@ -115,8 +121,11 @@ $("#newGame").on('click', function() {
     $("#totalScore").empty();
     $("#wins").empty();
     $("#loses").empty();
-    $("runningQuestion").empty();
-    $("#startButton").removeClass("displayNone");
+    $("#userAnswer").empty();
+    $("#correctAnswer").empty();
+    runningQuestion = 0;
+    qTimer = 6;
+    $("#quizContainer").removeClass("displayNone");
     $("#endGameResults").addClass("displayNone");
     console.log("check")
 });
@@ -171,32 +180,23 @@ function checkAnswer () {
         totalScore += 10;
         wins++;
         userAnswer = "";
+        myFunction();
     }
     else {
         loses++;
         userAnswer = "";
+        myFunction();
     }
+    
     if (runningQuestion === lastQuestion) {
-        clearTimeout();
+        myStopFunction();
         $("#quizContainer").addClass("displayNone");
         $("#resultsDuringGame").addClass("displayNone");
         $("#endGameResults").removeClass("displayNone");
-
+        runningQuestion = "";
+        qClockRunning = false;
     }
-
-    setTimeout(function() {
-        $("#resultsDuringGame").addClass("displayNone");
-        $("#quizContainer").removeClass("displayNone");
-        runningQuestion++;
-        renderQuestion();
-    //timer features
-        qTimer = 6;
-        clearInterval(intervalId); 
-        qRun();
-        //move to next question
-    }, 5000);
-
-
+ 
 
     console.log(runningQuestion);
     console.log(lastQuestion);

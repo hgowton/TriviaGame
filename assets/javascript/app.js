@@ -46,18 +46,27 @@ let lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 
 
-
+//Start game button
 $("#startButton").on('click', function() {
     $("#startButton").addClass("displayNone");
+    $("#quizContainer").removeClass("displayNone");
     renderQuestion();
     console.log("check")
 });
+
+//Next Question button
+$("#nextQuestion").on('click', function() {
+    $("#resultsDuringGame").addClass("displayNone");
+    $("#quizContainer").removeClass("displayNone");
+    renderQuestion();
+});
+
 //What happens when you select an answer
 $("#choiceA").on('click', function() {
     userAnswer = "A";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
-    $("#quizContainer").removeClass("displayOn");
     $("#quizContainer").addClass("displayNone");
+    $("#resultsDuringGame").removeClass("displayNone");
     checkAnswer();
     console.log("Answer: " + userAnswer)
 });
@@ -65,24 +74,24 @@ $("#choiceB").on('click', function() {
     userAnswer = "B";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
     checkAnswer();
-    $("#quizContainer").removeClass("displayOn");
     $("#quizContainer").addClass("displayNone");
+    $("#resultsDuringGame").removeClass("displayNone");
     console.log("Answer: " + userAnswer)
 });
 $("#choiceC").on('click', function() {
     userAnswer = "C";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
     checkAnswer();
-    $("#quizContainer").removeClass("displayOn");
     $("#quizContainer").addClass("displayNone");
+    $("#resultsDuringGame").removeClass("displayNone");
     console.log("Answer: " + userAnswer)
 });
 $("#choiceD").on('click', function() {
     userAnswer = "D";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
     checkAnswer();
-    $("#quizContainer").removeClass("displayOn");
     $("#quizContainer").addClass("displayNone");
+    $("#resultsDuringGame").removeClass("displayNone");
     console.log("Answer: " + userAnswer)
 });
 
@@ -115,7 +124,6 @@ function checkAnswer () {
 
     if (runningQuestion < lastQuestion) {
         runningQuestion++;
-        // renderQuestion();
     }
     // else STOP QUIZ
 }

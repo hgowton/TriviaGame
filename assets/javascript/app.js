@@ -2,18 +2,53 @@
 
 //Declare Variables
 var startButton
-var quizContainer
+var newGameButton
 
-var timer
-var totalScore = 0;
+var qTimer = 6;
+var intervalId;
+var qClockRunning = false;
+
 var wins = 0;
 var loses = 0;
-var progress
 var userAnswer = "";
+var totalScore = 0;
+var progress
 
 $(document).ready(function() {
 
-//Questions, choices, and images for questions
+
+//Question Timer -------------------------------
+function qStart () {
+    if (!qClockRunning) {
+        intervalId = setInterval(decrement, 1000);
+        qClockRunning = true;
+    }
+}
+
+function qRun() {
+    intervalId = setInterval(decrement, 1000);
+}
+
+//decrements timer, shows timer
+function decrement() {
+    qTimer--;
+    $("#timer").html("<h2>" + qTimer + "</h2>");
+
+    if (qTimer === 0) {
+        stop();
+    }  
+};
+
+
+function stop() {
+    clearInterval(intervalId);
+    $("#quizContainer").addClass("displayNone");
+    $("#resultsDuringGame").removeClass("displayNone");
+    loses++;
+}
+
+
+//Questions, choices, and images for questions-----------------------------
     let questions = [
         {question : "How old are you?",
             questionImage : "img/html.png",
@@ -33,7 +68,7 @@ $(document).ready(function() {
         correctAnswer : "A"
         },
         
-        {question : "What time is it?",
+        {question : "Last Qusetion",
         questionImage : "img/html.png",
         choiceA : "correct",
         choiceB : "midnight", 
@@ -42,8 +77,8 @@ $(document).ready(function() {
         correctAnswer : "A"
         },]
 
-let lastQuestion = questions.length - 1;
-let runningQuestion = 0;
+var lastQuestion = questions.length - 1;
+var runningQuestion = 0;
 
 
 //Start game button
@@ -51,6 +86,7 @@ $("#startButton").on('click', function() {
     $("#startButton").addClass("displayNone");
     $("#quizContainer").removeClass("displayNone");
     renderQuestion();
+    qStart();
     console.log("check")
 });
 
@@ -58,10 +94,15 @@ $("#startButton").on('click', function() {
 $("#nextQuestion").on('click', function() {
     $("#resultsDuringGame").addClass("displayNone");
     $("#quizContainer").removeClass("displayNone");
+    runningQuestion++;
     renderQuestion();
+//timer features
+    qTimer = 6;
+    clearInterval(intervalId); 
+    qRun();
 });
 
-//What happens when you select an answer
+//Select an Answer ----------
 $("#choiceA").on('click', function() {
     userAnswer = "A";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
@@ -70,6 +111,7 @@ $("#choiceA").on('click', function() {
     checkAnswer();
     console.log("Answer: " + userAnswer)
 });
+
 $("#choiceB").on('click', function() {
     userAnswer = "B";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
@@ -78,6 +120,7 @@ $("#choiceB").on('click', function() {
     $("#resultsDuringGame").removeClass("displayNone");
     console.log("Answer: " + userAnswer)
 });
+
 $("#choiceC").on('click', function() {
     userAnswer = "C";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
@@ -86,6 +129,7 @@ $("#choiceC").on('click', function() {
     $("#resultsDuringGame").removeClass("displayNone");
     console.log("Answer: " + userAnswer)
 });
+
 $("#choiceD").on('click', function() {
     userAnswer = "D";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
@@ -107,11 +151,11 @@ function renderQuestion() {
     $("#choiceC").html("<p>" + q.choiceC + "</p>");
     $("#choiceD").html("<p>" + q.choiceD + "</p>");
     $("#correctAnswer").html("<p> Correct Answer: " + q.correctAnswer + "</p>");
-    console.log("object answer: " + questions[runningQuestion].correctAnswer);
 }
 
 
 function checkAnswer () {
+    
     if ( userAnswer == questions[runningQuestion].correctAnswer){
         totalScore += 10;
         wins++;
@@ -121,20 +165,21 @@ function checkAnswer () {
         loses++;
         userAnswer = "";
     }
-
-    if (runningQuestion < lastQuestion) {
-        runningQuestion++;
+    if (runningQuestion === lastQuestion) {
+        $("#quizContainer").addClass("displayNone");
+        $("#endGameResults").removeClass("displayNone");
     }
+
+    console.log(runningQuestion);
+    console.log(lastQuestion);
+
+    //END GAME
     // else STOP QUIZ
+
+    document.getElementById("totalScore").innerHTML="Total Score: " + totalScore;
+    document.getElementById("wins").innerHTML="Wins: " + wins;
+    document.getElementById("loses").innerHTML="Loses: " + loses;
 }
 
-document.getElementById("wins").innerHTML="Wins: " + wins;
-document.getElementById("loses").innerHTML="Loses: " + loses;
-
-
-//IMPORTANT STEP Change classes to make the question versus score areas visible
-//$( "p" ).addClass( "myClass yourClass" );
-//$( "p" ).removeClass( "myClass noClass" ).addClass( "yourClass" );
-//display hidden versus show in class CSS code
 
 });

@@ -79,7 +79,7 @@ function stop() {
 //Questions, choices, and images for questions come from https://www.trafalgar.com/real-word/10-unbelievable-facts-ocean/-----------------------------
     let questions = [
         {question : "Our oceans cover more than ______ of the Earth’s surface.",
-            questionImage : "img/html.png",
+            questionImage : "assets/images/starfish.jpg",
             choiceA : "60%",
             choiceB : "70%", 
             choiceC : "80%", 
@@ -89,7 +89,7 @@ function stop() {
         },
 
         {question : "The majority of life on Earth is __________",
-        questionImage : "img/html.png",
+        questionImage : "assets/images/starfish.jpg",
         choiceA : "aquatic",
         choiceB : "benthic", 
         choiceC : "terrestrial", 
@@ -99,7 +99,7 @@ function stop() {
         },
         
         {question : "Where is the world's largest mountain chain?",
-        questionImage : "img/html.png",
+        questionImage : "assets/images/mountain.jpg",
         choiceA : "India",
         choiceB : "Antartica", 
         choiceC : "under water", 
@@ -109,7 +109,7 @@ function stop() {
         },
 
         {question : "The copper found in this organism's blood has helped it become a key research specimen.",
-        questionImage : "img/html.png",
+        questionImage : "assets/images/copper.jpg",
         choiceA : "horseshoe crab",
         choiceB : "blue crab", 
         choiceC : "jellyfish", 
@@ -119,7 +119,7 @@ function stop() {
         },
 
         {question : "Communities living in midocean ridges rely on bacteria beforing ______________ to create energy.",
-        questionImage : "img/html.png",
+        questionImage : "assets/images/hydrothermalVent.gif",
         choiceA : "photosynthesis",
         choiceB : "cellular respiration", 
         choiceC : "exocytosis", 
@@ -139,7 +139,7 @@ function stop() {
         },
         
         {question : "What part of the starfish enables it to regenerate?",
-        questionImage : "img/html.png",
+        questionImage : "assets/images/starfish.jpg",
         choiceA : "gonad",
         choiceB : "pyloric cecum", 
         choiceC : "madreporite", 
@@ -219,12 +219,13 @@ console.log("correct answer: " + questions[runningQuestion].correctAnswer);
 function renderQuestion() {
     let q = questions[runningQuestion];
     $("#question").html("<p>" + q.question + "</p>")
-    // $("#questionImage").html("<img src=" + q.questionImage + " />");
+    $("#questionImage").html("<img src=" + q.questionImage + " />");
     $("#choiceA").html("<p>" + q.choiceA + "</p>");
     $("#choiceB").html("<p>" + q.choiceB + "</p>");
     $("#choiceC").html("<p>" + q.choiceC + "</p>");
     $("#choiceD").html("<p>" + q.choiceD + "</p>");
     $("#correctAnswer").html("<p> Correct Answer: " + q.correctAnswer + "</p>");
+    $("#exInfo").html("<p>" + q.exInfo + "</p>");
 }
 
 

@@ -6,7 +6,9 @@ body {
     background: url("../images/water_background.jpg");
   }
 
-  
+img {
+    width: 50%;
+}
 #gameTitle {
     padding-top: 25px;
     font-family: 'Ruda', sans-serif;
@@ -32,6 +34,10 @@ body {
     background-color: #F0F0F0;
     padding: 10px 0px 20px 0px;
     border-radius: 8px;
+}
+
+.option {
+    font-family: 'Roboto Slab', serif;
 }
 
 .option {

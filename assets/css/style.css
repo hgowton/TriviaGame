@@ -6,6 +6,38 @@ body {
     background: url("../images/water_background.jpg");
   }
 
+  
+#gameTitle {
+    padding-top: 25px;
+    font-family: 'Ruda', sans-serif;
+    color: white;
+    text-shadow: 0px 2px 6px blue;
+    font-size: 65px;
+}
+    
+#question {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    font-size: 20px;
+}
+
+#timer {
+    background-color: #181818;
+    text-align: center;
+    color: #F0F0F0;
+    font-family: 'Ruda', sans-serif;
+    border-radius: 4px;
+}
+
+#quizContainer {
+    background-color: #F0F0F0;
+    padding: 10px 0px 20px 0px;
+    border-radius: 8px;
+}
+
+.option {
+    font-family: 'Roboto Slab', serif;
+}
+
 .startGame {
     margin-top: 50px;
     background-color: #6c757d;

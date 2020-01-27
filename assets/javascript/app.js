@@ -76,34 +76,80 @@ function stop() {
         clearInterval(intervalId); 
     }
 
-//Questions, choices, and images for questions-----------------------------
+//Questions, choices, and images for questions come from https://www.trafalgar.com/real-word/10-unbelievable-facts-ocean/-----------------------------
     let questions = [
-        {question : "How old are you?",
+        {question : "Our oceans cover more than ______ of the Earth’s surface.",
             questionImage : "img/html.png",
-            choiceA : "wrong",
-            choiceB : "wrong", 
-            choiceC : "wrong", 
-            choiceD : "correct",
-            correctAnswer : "D"
+            choiceA : "60%",
+            choiceB : "70%", 
+            choiceC : "80%", 
+            choiceD : "90%",
+            correctAnswer : "B",
+            exInfo : "With so much of the Earth’s surface taken up by ocean, it’s evident how vital these marine environments are to the planet, and how much there still is to be explored."
         },
 
-        {question : "What time is it?",
+        {question : "The majority of life on Earth is __________",
         questionImage : "img/html.png",
-        choiceA : "correct",
-        choiceB : "midnight", 
-        choiceC : "15 minutes after 4", 
-        choiceD : "3 pm",
-        correctAnswer : "A"
+        choiceA : "aquatic",
+        choiceB : "benthic", 
+        choiceC : "terrestrial", 
+        choiceD : "nocturnal",
+        correctAnswer : "A",
+        exInfo : "As so much of the Earth’s surface is underwater, it comes as no surprise that marine species outnumber those on land. But, it’s an incredible 94 per cent of the Earth’s living species that exist within the oceans."
         },
         
-        {question : "Last Qusetion",
+        {question : "Where is the world's largest mountain chain?",
         questionImage : "img/html.png",
-        choiceA : "correct",
-        choiceB : "midnight", 
-        choiceC : "15 minutes after 4", 
-        choiceD : "3 pm",
-        correctAnswer : "A"
-        },]
+        choiceA : "India",
+        choiceB : "Antartica", 
+        choiceC : "under water", 
+        choiceD : "Africa",
+        correctAnswer : "C",
+        exInfo : "Earth’s longest chain of mountains, the Mid-Ocean Ridge, is almost entirely beneath the ocean, stretching across a distance of 65,000 kilometres. It’s said that this mountain chain is less explored than the surface of Venus or Mars"
+        },
+
+        {question : "The copper found in this organism's blood has helped it become a key research specimen.",
+        questionImage : "img/html.png",
+        choiceA : "horseshoe crab",
+        choiceB : "blue crab", 
+        choiceC : "jellyfish", 
+        choiceD : "octupus",
+        correctAnswer : "A",
+        exInfo : "Horseshoe crabs use hemocyanin to carry oxygen through their blood. Because of the copper present in hemocyanin, their blood is blue. Their blood contains amebocytes, which play a similar role to the white blood cells of vertebrates in defending the organism against pathogens."
+        },
+
+        {question : "Communities living in midocean ridges rely on bacteria beforing ______________ to create energy.",
+        questionImage : "img/html.png",
+        choiceA : "photosynthesis",
+        choiceB : "cellular respiration", 
+        choiceC : "exocytosis", 
+        choiceD : "chemosynthesis",
+        correctAnswer : "D",
+        exInfo : "Chemosynthesis is the process by which food (glucose) is made by bacteria using chemicals as the energy source, rather than sunlight. Chemosynthesis occurs around hydrothermal vents and methane seeps in the deep sea where sunlight is absent."
+        },
+
+        {question : "What organism is responsible for creating this egg case?",
+        questionImage : "assets/images/skateEgg.jpg",
+        choiceA : "whelk",
+        choiceB : "shark", 
+        choiceC : "starfish", 
+        choiceD : "skate",
+        correctAnswer : "D",
+        exInfo : "The skates are the only rays that are oviparous. Females lay egg cases onto the sea floor after fertilization occurs in utero. While in utero, a protected case forms around the embryo which is called the egg case."
+        },
+        
+        {question : "What part of the starfish enables it to regenerate?",
+        questionImage : "img/html.png",
+        choiceA : "gonad",
+        choiceB : "pyloric cecum", 
+        choiceC : "madreporite", 
+        choiceD : "gonopore",
+        correctAnswer : "C",
+        exInfo : "Because starfish like to eat clams and oysters, fishermen who gather shellfish have tried for years to get rid of them. To kill the starfish, fishermen would catch them, slice them right in half, and throw them back in the ocean. However, if even a small part of their madreporite is present the starfish can grow back parts of their bodies. Thus fisherman were actually increasing the number of starfish."
+        },
+
+
+    ]
 
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;

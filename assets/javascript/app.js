@@ -48,18 +48,19 @@ function stop() {
     checkAnswer();
 }
 
-//timer feature
+//results countdown timer 
     function myFunction(){
         stopTime = setTimeout(function() {
             $("#resultsDuringGame").addClass("displayNone");
             $("#quizContainer").removeClass("displayNone");
             runningQuestion++;
             renderQuestion();
-            //timer features
+        //timer features
             qTimer = 6;
             clearInterval(intervalId); 
             qRun();
-            //move to next question
+        //clear user answer
+            userAnswer = "";
         }, 3000);}
         
         
@@ -67,9 +68,6 @@ function stop() {
             clearTimeout(stopTime);
         }
         
-        // function timeStop () {
-        //     stopTime = setTimeout
-        // }
 
 //Display Results Review 
     function resultsReview (){
@@ -117,7 +115,6 @@ $("#startButton").on('click', function() {
     $("#quizContainer").removeClass("displayNone");
     renderQuestion();
     qStart();
-    console.log("check")
 });
 
 //New game button
@@ -128,11 +125,12 @@ $("#newGame").on('click', function() {
     $("#userAnswer").empty();
     $("#correctAnswer").empty();
     clearInterval(intervalId); 
-    runningQuestion = 0;
     qTimer = 6;
     $("#quizContainer").removeClass("displayNone");
     $("#endGameResults").addClass("displayNone");
-    console.log("check")
+    qStart();
+    runningQuestion = 0;
+    console.log("running question end of game:" + runningQuestion);
 });
 
 //Select an Answer ----------
@@ -156,16 +154,16 @@ $("#choiceB").on('click', function() {
 $("#choiceC").on('click', function() {
     userAnswer = "C";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
-    checkAnswer();
     resultsReview();
+    checkAnswer();
     console.log("Answer: " + userAnswer)
 });
 
 $("#choiceD").on('click', function() {
     userAnswer = "D";
     document.getElementById("userAnswer").innerHTML="Your Answer Choice: " + userAnswer;
-    checkAnswer();
     resultsReview();
+    checkAnswer();
     console.log("Answer: " + userAnswer)
 });
 
@@ -189,12 +187,10 @@ function checkAnswer () {
     if ( userAnswer == questions[runningQuestion].correctAnswer){
         totalScore += 10;
         wins++;
-        userAnswer = "";
         myFunction();
     }
     else {
         loses++;
-        userAnswer = "";
         myFunction();
     }
     
@@ -202,13 +198,14 @@ function checkAnswer () {
         myStopFunction();
         $("#resultsDuringGame").addClass("displayNone");
         $("#endGameResults").removeClass("displayNone");
-        runningQuestion = "";
         qClockRunning = false;
+        console.log("UA " + userAnswer);
+        console.log("CA " + correctAnswer);
     }
  
 
-    console.log(runningQuestion);
-    console.log(lastQuestion);
+    console.log("RunningQuestion: " + runningQuestion);
+    console.log("LastQuestion: " + lastQuestion);
 
     //END GAME
     // else STOP QUIZ

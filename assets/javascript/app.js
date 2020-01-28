@@ -24,6 +24,7 @@ function qStart () {
     wins = 0;
     loses = 0;
     totalScore = 0;
+    runningQuestion = 0;
 }
 
 function qRun() {
@@ -79,7 +80,7 @@ function stop() {
 //Questions, choices, and images for questions come from https://www.trafalgar.com/real-word/10-unbelievable-facts-ocean/-----------------------------
     let questions = [
         {question : "Our oceans cover more than ______ of the Earth’s surface.",
-            questionImage : "assets/images/starfish.jpg",
+            questionImage : "assets/images/earth.jpg",
             choiceA : "60%",
             choiceB : "70%", 
             choiceC : "80%", 
@@ -89,7 +90,7 @@ function stop() {
         },
 
         {question : "The majority of life on Earth is __________",
-        questionImage : "assets/images/starfish.jpg",
+        questionImage : "assets/images/biodiversity.png",
         choiceA : "aquatic",
         choiceB : "benthic", 
         choiceC : "terrestrial", 
@@ -175,8 +176,9 @@ $("#newGame").on('click', function() {
     $("#quizContainer").removeClass("displayNone");
     $("#endGameResults").addClass("displayNone");
     qStart();
-    runningQuestion = 0;
     console.log("running question end of game:" + runningQuestion);
+    console.log("New Game Button Question:" + questions.question);
+
 });
 
 //Select an Answer ----------
@@ -248,6 +250,7 @@ function checkAnswer () {
         qClockRunning = false;
         console.log("UA " + userAnswer);
         console.log("CA " + correctAnswer);
+        console.log("New Game Button if statement:" + questions.question);
     }
  
 

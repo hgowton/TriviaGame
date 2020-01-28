@@ -10,7 +10,7 @@ var wins = 0;
 var loses = 0;
 var userAnswer = "";
 var totalScore = 0;
-var progress
+var message = "";
 
 $(document).ready(function() {
  
@@ -160,8 +160,8 @@ var runningQuestion = 0;
 $("#startButton").on('click', function() {
     $("#startButton").addClass("displayNone");
     $("#quizContainer").removeClass("displayNone");
-    renderQuestion();
     qStart();
+    renderQuestion();
 });
 
 //New game button
@@ -176,8 +176,9 @@ $("#newGame").on('click', function() {
     $("#quizContainer").removeClass("displayNone");
     $("#endGameResults").addClass("displayNone");
     qStart();
+    renderQuestion();
     console.log("running question end of game:" + runningQuestion);
-    console.log("New Game Button Question:" + questions.question);
+    console.log("New Game Button Question:" + questions[runningQuestion].question);
 
 });
 
@@ -236,10 +237,12 @@ function checkAnswer () {
     if ( userAnswer == questions[runningQuestion].correctAnswer){
         totalScore += 10;
         wins++;
+        document.getElementById("message").innerHTML="You are correct!";
         myFunction();
     }
     else {
         loses++;
+        document.getElementById("message").innerHTML="OOps, that is not correct!";
         myFunction();
     }
     

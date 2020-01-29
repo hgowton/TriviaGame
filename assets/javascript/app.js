@@ -1,7 +1,7 @@
 //video for Trivia game https://www.youtube.com/watch?v=xhmmiRmxQ8Q&feature=youtu.be
 
 //Declare Variables
-var qTimer = 6;
+var qTimer = 20;
 var intervalId;
 var qClockRunning = false;
 var stopTime;
@@ -57,7 +57,7 @@ function stop() {
             runningQuestion++;
             renderQuestion();
         //timer features
-            qTimer = 6;
+            qTimer = 20;
             clearInterval(intervalId); 
             qRun();
         //clear user answer
@@ -155,32 +155,34 @@ function stop() {
 var lastQuestion = questions.length - 1;
 var runningQuestion = 0;
 
-
-//Start game button
-$("#startButton").on('click', function() {
-    $("#startButton").addClass("displayNone");
-    $("#quizContainer").removeClass("displayNone");
-    qStart();
-    renderQuestion();
-});
-
-//New game button
-$("#newGame").on('click', function() {
+function startGame (){
     $("#totalScore").empty();
     $("#wins").empty();
     $("#loses").empty();
     $("#userAnswer").empty();
     $("#correctAnswer").empty();
     clearInterval(intervalId); 
-    qTimer = 6;
+    qTimer = 20;
     $("#quizContainer").removeClass("displayNone");
     $("#endGameResults").addClass("displayNone");
     qStart();
     renderQuestion();
     console.log("running question end of game:" + runningQuestion);
     console.log("New Game Button Question:" + questions[runningQuestion].question);
+}
 
+$("#startButton").on('click', function() {
+    $("#startButton").addClass("displayNone");
+    $("#quizContainer").removeClass("displayNone");
+    startGame();
 });
+
+$("#newGame").on('click', function() {
+    $("#quizContainer").removeClass("displayNone");
+    $("#endGameResults").addClass("displayNone");
+    startGame();
+});
+
 
 //Select an Answer ----------
 $("#choiceA").on('click', function() {
@@ -242,18 +244,16 @@ function checkAnswer () {
     }
     else {
         loses++;
-        document.getElementById("message").innerHTML="OOps, that is not correct!";
+        document.getElementById("message").innerHTML="Oops, you did not determine the correct answer!";
         myFunction();
     }
-    
+
     if (runningQuestion === lastQuestion) {
         myStopFunction();
         $("#resultsDuringGame").addClass("displayNone");
         $("#endGameResults").removeClass("displayNone");
         qClockRunning = false;
-        console.log("UA " + userAnswer);
-        console.log("CA " + correctAnswer);
-        console.log("New Game Button if statement:" + questions.question);
+
     }
  
 

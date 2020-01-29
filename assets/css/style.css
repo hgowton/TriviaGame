@@ -7,8 +7,9 @@ body {
   }
 
 img {
-    width: 30%;
+    width: 225px;
 }
+
 #gameTitle {
     padding-top: 25px;
     font-family: 'Ruda', sans-serif;
@@ -22,6 +23,11 @@ img {
     font-size: 20px;
 }
 
+#message {
+    text-align: center;
+    font-family: 'Ruda', sans-serif;
+    font-size: 25px;
+}
 #timer {
     background-color: #181818;
     text-align: center;

@@ -58,6 +58,7 @@ function stop() {
             renderQuestion();
         //timer features
             qTimer = 20;
+            $("#timer").html("<h2>" + qTimer + "</h2>");
             clearInterval(intervalId); 
             qRun();
         //clear user answer
